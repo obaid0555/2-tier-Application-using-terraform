@@ -1,7 +1,9 @@
 # Get the certificate from AWS ACM
 data "aws_acm_certificate" "issued" {
-  domain   = var.certificate_domain_name
-  statuses = ["ISSUED"]
+  domain      = var.certificate_domain_name
+  statuses    = ["ISSUED"]
+  most_recent = true
+  provider    = aws.us_east_1 # Ensure this uses the correct region for CloudFront
 }
 
 #creating Cloudfront distribution :
