@@ -49,7 +49,7 @@ variable "db_username" {
 }
 
 variable "db_password" {
-  description = "admin123@"
+  description = "ComplexP@ssw0rd!75ace03c"
   type        = string
 }
 

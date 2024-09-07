@@ -4,10 +4,10 @@ resource "aws_db_subnet_group" "db-subnet" {
 }
 
 resource "aws_db_instance" "db" {
-  identifier              = "bookdb-instance"
+  identifier              = "logsdbtable"
   engine                  = "mysql"
-  engine_version          = "5.7"
-  instance_class          = "db.t2.micro"
+  engine_version          = "5.7.44"
+  instance_class          = "db.t3.micro"
   allocated_storage       = 20
   username                = var.db_username
   password                = var.db_password
@@ -18,12 +18,16 @@ resource "aws_db_instance" "db" {
   publicly_accessible     = false
   skip_final_snapshot     = true
   backup_retention_period = 0
+  parameter_group_name    = "default.mysql5.7"
 
   vpc_security_group_ids = [var.db_sg_id] # Replace with your desired security group ID
 
   db_subnet_group_name = aws_db_subnet_group.db-subnet.name
 
   tags = {
-    Name = "bookdb"
+    Name = "logsdbtable"
   }
 }
+
+
+
