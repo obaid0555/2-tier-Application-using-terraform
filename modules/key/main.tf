@@ -1,7 +1,7 @@
 
 # Create S3 bucket
 resource "aws_s3_bucket" "key_bucket" {
-  bucket = "my-unique-bucket-name"
+  bucket = "cicd-terraform-eks-ob1234"
   acl    = "private"
 }
 
@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "key_bucket" {
 resource "aws_s3_bucket_object" "public_key" {
   bucket = aws_s3_bucket.key_bucket.bucket
   key    = "keys/my_new_key.pub"
-  source = "/home/obaidansari/.ssh/my_new_key.pub"
+  source = "/home/obaiansari/.ssh/my_new_key.pub"
   acl    = "private"
 }
 
